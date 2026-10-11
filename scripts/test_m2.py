@@ -12,6 +12,7 @@ SCRIPTS = REPO_ROOT / "scripts"
 
 STEPS = (
     "test_run_m2_tier1_lifecycle.py",
+    "test_openlabs_runner.py",
     "test_openlabs_cli.py",
     "test_openlabs_issue.py",
     "test_openlabs_lab_discovery.py",
@@ -26,6 +27,8 @@ STEPS = (
     "test_openlabs_verify.py",
     "test_cli_contract_fixtures.py",
     "test_diagnostic_registry.py",
+    "test_m2_docs.py",
+    "test_m2_release_report.py",
 )
 
 
