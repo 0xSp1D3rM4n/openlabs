@@ -50,6 +50,10 @@ Keep plaintext flags out of documentation.
 
 ## What was checked
 
-This review inspected source and ran static checks.
-The [validation report](validation-report.mdx) records the results.
-It does not claim a live security test or a dependency vulnerability scan.
+The review inspected the source and ran static repository checks.
+It also verified clean-clone startup and exercised the documented flow,
+secure mode, and reset in an isolated container with external networking disabled.
+The shared checker accepted the flag after both solves.
+
+The [validation report](validation-report.mdx) links the recorded results.
+These checks do not constitute a full penetration test or dependency vulnerability audit.
