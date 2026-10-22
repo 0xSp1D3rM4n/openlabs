@@ -1,0 +1,49 @@
+Repository checks on 2026-10-22
+Base commit: 6c99e68
+
+$ python3 scripts/validate.py
+blocking failures (supported): none
+advisory findings (experimental): none
+uncatalogued directories (5; not in public catalog):
+  labs/web/Sayed_Khashana_REST_API_IDOR_CTF
+  labs/web/duckcorp-savegame
+  labs/web/duckdesk
+  labs/web/duckfleet
+  labs/web/duckmarket
+catalog: 1 supported, 20 experimental
+
+$ python3 scripts/validate.py --compose
+blocking failures (supported): none
+advisory findings (experimental): none
+uncatalogued directories (5; not in public catalog):
+  labs/web/Sayed_Khashana_REST_API_IDOR_CTF
+  labs/web/duckcorp-savegame
+  labs/web/duckdesk
+  labs/web/duckfleet
+  labs/web/duckmarket
+catalog: 1 supported, 20 experimental
+
+$ python3 scripts/test_contract.py (exit 1)
+tier1 lifecycle tests: passed 11 tests
+openlabs runner: passed 2 tests
+openlabs cli: passed 13 tests
+openlabs issue: passed 6 tests
+FAIL test_list_json_baseline_counts:
+FAIL test_list_human_sections:
+openlabs lab discovery: failed 2 tests
+m2 gate: test_openlabs_lab_discovery.py failed
+contract gate: test_m2.py failed
+
+$ python3 scripts/test_openlabs_contract.py
+fixtures: passed 5 cases
+catalog context: passed 21 labs
+duplicate parsers: none outside openlabs_contract.py
+
+$ python3 scripts/test_contract_schema.py
+schema document: ok
+valid fixtures: passed 4
+invalid fixtures: rejected 7
+catalog representation: passed 21 labs
+
+Upstream archive control: openlabs lab discovery: passed 6 tests.
+This control result applies to discovery only, not to the full contract gate.

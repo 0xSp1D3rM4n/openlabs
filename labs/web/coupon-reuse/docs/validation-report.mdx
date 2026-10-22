@@ -1,0 +1,78 @@
+# Validation report
+
+## Scope
+
+Recorded on `2026-10-22`.
+
+This report includes the author's application test results and the recorded
+automated file checks.
+
+## Application tests
+
+The author confirmed that the application ran, the application tests worked,
+and the flag appeared at the end of the solve.
+
+| Test | Expected result | Reported result |
+| --- | --- | --- |
+| Start the application | The application runs and can be used | Passed |
+| Complete the challenge | The player can finish the purchase flow | Passed |
+| Retrieve the flag | The flag appears at the end of the solve | Passed |
+
+These results were reported by the author.
+The automated documentation review did not repeat the application tests.
+No application test transcript is attached to this report.
+
+See the [walkthrough](challenge-design.mdx#walkthrough) for the intended steps
+and the [operations guide](operations.mdx) for startup and reset commands.
+
+## Completed file checks
+
+| Check | Result | Recorded evidence |
+| --- | --- | --- |
+| Per-lab structure and metadata | Passed | The upstream `validate.check_lab` helper returned no errors |
+| Compose configuration | Passed | `docker compose config` returned exit `0`; one service and one host port |
+| Port configuration | Confirmed | Host `127.0.0.1:8080` maps to container port `5000` |
+| Default mode | Confirmed | Compose defaults to `SECURE_MODE=0` |
+| Flag format and hash | Passed | The authored flag has the required format and its hash matches `lab.yml` |
+| Python syntax | Passed | The source parsed without a syntax error |
+| Documentation | Passed | No broken relative file links, trailing whitespace, or plaintext flags were found |
+
+The automated checks used Python `3.13.12` and Docker Compose `v5.1.4`.
+The application image specifies Python `3.12.15`.
+The syntax check did not import or run the application.
+The per-lab result was confirmed by the full validator in the contribution checkout.
+
+## Full repository checks
+
+These checks ran in the contribution checkout on `2026-10-22`.
+The branch uses upstream commit `6c99e68` as its base.
+The [recorded output](evidence/repository-checks.txt) contains the results.
+
+| Command | Result |
+| --- | --- |
+| `python3 scripts/validate.py` | Passed; exit `0`, no blocking or advisory findings |
+| `python3 scripts/validate.py --compose` | Passed; exit `0`, no blocking or advisory findings |
+| `python3 scripts/test_openlabs_contract.py` | Passed; five fixtures and metadata context for `21` labs |
+| `python3 scripts/test_contract_schema.py` | Passed; four valid fixtures, seven invalid fixtures rejected, `21` catalog records checked |
+| `python3 scripts/test_contract.py` | Failed; two catalog-count assertions in the M2 discovery suite |
+
+The metadata uses `techniques: []`.
+The earlier `business-logic` entry referred to a technique page that does not exist.
+An empty list is allowed by the contract.
+
+### Remaining contract failure
+
+The discovery tests expect `19` experimental labs.
+Adding this lab makes the count `20`.
+The following tests fail because their expected counts are fixed:
+
+- `test_list_json_baseline_counts`
+- `test_list_human_sections`
+
+The discovery suite passed all six tests in a separate upstream archive without
+this lab. The contribution checkout fails the two count assertions above.
+No repository test files were changed.
+
+The full contract gate remains failing.
+The catalog-count expectations need maintainer review before this PR is ready
+for final approval. The application results above remain the author's manual results.
