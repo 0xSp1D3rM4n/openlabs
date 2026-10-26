@@ -16,18 +16,29 @@ body:
         [private vulnerability reporting](https://github.com/duckurity/openlabs/security/advisories/new),
         not through public issues.
   - type: dropdown
-    id: track
-    attributes:
-      label: Track
-      description: Which track does the lab belong to?
-      options:
-        - web
-        - binary
-        - crypto
-        - network
-        - osint
-    validations:
-      required: true
+  id: track
+  attributes:
+    label: Track
+    description: Which cybersecurity domain does this lab belong to?
+    options:
+      - web
+      - api
+      - android
+      - ios
+      - network
+      - windows
+      - linux
+      - binary
+      - reverse-engineering
+      - crypto
+      - osint
+      - forensics
+      - malware-analysis
+      - dfir
+      - llm
+      - misc
+  validations:
+    required: true
   - type: dropdown
     id: difficulty
     attributes:
