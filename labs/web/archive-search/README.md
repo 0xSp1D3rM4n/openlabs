@@ -5,7 +5,7 @@
 Archive Search is an internal catalog for staff to search archived product records.
 The application and account are fictional training material.
 
-Open <http://127.0.0.1:8080/>. The host port is `8080`.
+Open `http://127.0.0.1:8080/`. The host port is `8080`.
 Sign in with username `researcher` and password `Archive2026-researcher`.
 
 ## Setup
